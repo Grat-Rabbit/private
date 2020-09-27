@@ -42,9 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <body id="layout">   
     <div data-options="region:'north',split:false,collapsible:false,href:'north.jsp'" style="height:100px;">
     </div>   
-    <div data-options="region:'south',split:false,collapsible:false" style="height:35px;">
-    	<p align="center">版权声明-浙江理工大学</p>
-    </div>     
+
     <div data-options="region:'west',title:'用户目录',split:false,href:'west.jsp'"  style="width:220px;"></div>   
     <div data-options="region:'center',iconCls:'icon-large-clipart',title:'欢迎你。。。',href:'center.jsp'" style="overflow:hidden;"></div>   
 </body> 

@@ -52,10 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>  
     
      
-    <div data-options="region:'south',split:false,collapsible:false" style="height:35px;">
-    	<p align="center">版权声明-浙江理工大学</p>
-    </div>  
-    
+
        
     <div data-options="region:'west',title:'用户信息',split:false"  style="width:250px;">
     	<table>

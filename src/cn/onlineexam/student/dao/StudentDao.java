@@ -143,8 +143,9 @@ public class StudentDao {
 			//得到BeanList
 			sqlString="select * from student order by uid limit ?,?";
 			preparedStatement=connection.prepareStatement(sqlString);
-			preparedStatement.setInt(1, (page-1)*rows);
-			preparedStatement.setInt(2, rows);
+			int i =1,j=2;
+			preparedStatement.setInt(i, (page-1)*rows);
+			preparedStatement.setInt(j, rows);
 			List<Student> beanList=new ArrayList<Student>();
 			resultSet=preparedStatement.executeQuery();
 			while(resultSet.next()){
@@ -171,7 +172,8 @@ public class StudentDao {
 	 */
 	public boolean add(RowData rowData) throws SQLException {
 		String sql = "insert into student values(?,?,?)";
-		int i=qr.update(sql, rowData.getUid(), rowData.getLoginname(), rowData.getLoginpass());
+		int i=qr.update(JdbcUtils.getConnection(),sql, rowData.getUid(), rowData.getLoginname(), rowData.getLoginpass());
+		System.out.println(i);
 		if(i!=0){
 			return true;
 		}else{
@@ -184,7 +186,7 @@ public class StudentDao {
 	 */
 	public boolean removeStudent(String uidString) throws SQLException {
 		String sql = "delete from student where uid in("+uidString+")";
-		int i=qr.update(sql, uidString);
+		int i=qr.update(JdbcUtils.getConnection(),sql, uidString);
 		if(i!=0){
 			return true;
 		}else{
@@ -214,10 +216,11 @@ public class StudentDao {
 			}
 			//得到BeanList
 			sqlString="select * from student where uid like ? order by uid limit ?,?";
+			int i=1,j=2,l=3;
 			preparedStatement=connection.prepareStatement(sqlString);
-			preparedStatement.setString(1, uidString);
-			preparedStatement.setInt(2, (page-1)*rows);
-			preparedStatement.setInt(3, rows);
+			preparedStatement.setString(i, uidString);
+			preparedStatement.setInt(j, (page-1)*rows);
+			preparedStatement.setInt(l, rows);
 			List<Student> beanList=new ArrayList<Student>();
 			resultSet=preparedStatement.executeQuery();
 			while(resultSet.next()){

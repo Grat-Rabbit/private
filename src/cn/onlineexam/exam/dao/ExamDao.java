@@ -383,7 +383,7 @@ public class ExamDao {
 	public void addProgramSubmit(String loginname, String question, String program) throws SQLException {
 		String sqlSelect="select * from programsubmit where studentName=?";
 		ProgramSubmit programSubmit;
-		programSubmit=qrQueryRunner.query(sqlSelect, new BeanHandler<ProgramSubmit>(ProgramSubmit.class),loginname);
+		programSubmit=qrQueryRunner.query(JdbcUtils.getConnection(),sqlSelect, new BeanHandler<ProgramSubmit>(ProgramSubmit.class),loginname);
 		if(programSubmit==null){
 			String sql = "insert into programsubmit(studentName,question,studentAnswer) values(?,?,?)";
 			qrQueryRunner.update(sql,loginname,question,program);
